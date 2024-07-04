@@ -8,17 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5217532154049017674, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
+      propertyPath: animationSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5217532154049017674, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
+      propertyPath: animationSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1489461856, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
+    - target: {fileID: -5217532154049017674, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
+      propertyPath: animationSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1658452980, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
     - target: {fileID: 3729535471788297215, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1489461856, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
+      objectReference: {fileID: -1658452980, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
     - target: {fileID: 4485604439195201646, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
       propertyPath: m_Name
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4978903996035156556, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 3.3333333
+      value: 3.2916667
       objectReference: {fileID: 0}
     - target: {fileID: 4978903996035156556, guid: ebb3ddba95037b143b7edf32060764a2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y

@@ -9,8 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 853500564786192875, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 853500564786192875, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 853500564786192875, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 3.3333333
+      value: 3.2916667
       objectReference: {fileID: 0}
     - target: {fileID: 853500564786192875, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -58,12 +66,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8106674540043230153, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
       propertyPath: m_Name
-      value: 5 Variant
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8743521890286773009, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: animationSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743521890286773009, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: animationSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -2024789690, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
+    - target: {fileID: 8743521890286773009, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: animationSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1267281146, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
     - target: {fileID: 9007577708484812888, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1320991962, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
+      objectReference: {fileID: -1267281146, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
