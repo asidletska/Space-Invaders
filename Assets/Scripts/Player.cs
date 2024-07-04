@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public ProjectTile laserPrefab;
     public float speed = 5.0f;
+    private bool _laserActive;
 
     private void Update()
     {
@@ -21,6 +23,15 @@ public class Player : MonoBehaviour
     }
     private void Shoot()
     {
-
+        if (!_laserActive)
+        {
+            ProjectTile projecttile = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            projecttile.destroyed += LaserDestroyed;
+            _laserActive = true;
+        }
+    }
+    private void LaserDestroyed()
+    {
+        _laserActive = false;
     }
 }
