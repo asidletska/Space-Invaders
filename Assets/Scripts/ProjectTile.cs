@@ -13,7 +13,10 @@ public class ProjectTile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        destroyed.Invoke();
+        if (destroyed != null)
+        {
+            destroyed.Invoke();
+        }
         Destroy(gameObject);
     }
 }

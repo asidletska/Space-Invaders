@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow) ) 
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ) 
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
@@ -33,5 +34,12 @@ public class Player : MonoBehaviour
     private void LaserDestroyed()
     {
         _laserActive = false;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Invader")|| other.gameObject.layer == LayerMask.NameToLayer("Missile")) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
