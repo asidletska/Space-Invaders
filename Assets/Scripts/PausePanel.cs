@@ -10,12 +10,7 @@ public class PausePanel : MonoBehaviour
         panel.SetActive(true);
         Time.timeScale = 0f;
     }
-    public void ContinueButtonPressed()
-    {
-        panel.SetActive(false);
 
-        Time.timeScale = 1.0f;
-    }
     public void MenuButtonPressed()
     {
         SceneManager.LoadScene(0);

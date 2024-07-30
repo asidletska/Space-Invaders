@@ -1462,7 +1462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:  '
+  m_Text: 'Score:  0'
 --- !u!222 &1048883920
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1807,6 +1807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afae56a2f01882f41a86fbd227dcd9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 1048883919}
+  score: 0
+  panel: {fileID: 0}
 --- !u!1 &1514553285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2104,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717866532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 649437089}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1717866532
 MonoBehaviour:
   m_ObjectHideFlags: 0

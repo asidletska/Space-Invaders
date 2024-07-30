@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 64922607167676072, guid: b9ad3a33803522148b95fb80f35dfdf8, type: 3}
+      propertyPath: score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 64922607167676072, guid: b9ad3a33803522148b95fb80f35dfdf8, type: 3}
       propertyPath: animationSprites.Array.data[0]
       value: 
       objectReference: {fileID: -1766324867, guid: 1e9300ceef3b4d143b556c1d7e4fa8f4, type: 3}

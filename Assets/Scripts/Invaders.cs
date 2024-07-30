@@ -9,7 +9,7 @@ public class Invaders : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     private int _animationFrame;
-
+    public int points = 1;
     private void Awake()
     {
         {
@@ -35,6 +35,7 @@ public class Invaders : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            FindObjectOfType<GameManager>().IncreaseScore(points);
             killed.Invoke();
             gameObject.SetActive(false);
         }
