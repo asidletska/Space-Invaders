@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +7,28 @@ public class Player : MonoBehaviour
     public float speed = 5.0f;
     private bool _laserActive;
 
+    private Camera mainCamera;
+    private float screenLeftLimit;
+    private float screenRightLimit;
+    private float screenTopLimit;
+    private float screenBottomLimit;
+    private float playerWidth;
+    private float playerHeight;
+
+
+    public UnityEvent laser;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        playerWidth = renderer.bounds.size.x / 2;
+        playerHeight = renderer.bounds.size.y / 2;        
+        screenLeftLimit = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + playerWidth;
+        screenRightLimit = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - playerWidth;
+        screenBottomLimit = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + playerHeight;
+        screenTopLimit = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y - playerHeight;
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -21,11 +43,17 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
+
+        // ќбмеженн€ руху гравц€ в межах екрану
+        float xClamp = Mathf.Clamp(transform.position.x, screenLeftLimit, screenRightLimit);
+        float yClamp = Mathf.Clamp(transform.position.y, screenBottomLimit, screenTopLimit);
+        transform.position = new Vector3(xClamp, yClamp, transform.position.z);
     }
     private void Shoot()
     {
         if (!_laserActive)
         {
+            laser.Invoke();
             ProjectTile projecttile = Instantiate(laserPrefab, transform.position, Quaternion.identity);
             projecttile.destroyed += LaserDestroyed;
             _laserActive = true;
@@ -39,7 +67,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Invader")|| other.gameObject.layer == LayerMask.NameToLayer("Missile")) 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            FindObjectOfType<GameManager>().GameOver();            
         }
     }
 }

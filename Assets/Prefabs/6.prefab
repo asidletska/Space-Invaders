@@ -73,6 +73,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8743521890286773009, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
+      propertyPath: points
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743521890286773009, guid: a28dd9ffd9668d04eacfa62bc47aa9af, type: 3}
       propertyPath: animationSprites.Array.size
       value: 2
       objectReference: {fileID: 0}

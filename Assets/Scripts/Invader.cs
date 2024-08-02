@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Invader : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class Invader : MonoBehaviour
     public AnimationCurve speed;
     public ProjectTile missilePrefab;
     public float missileAttackRate = 1.0f;
+    private int points;
     public int invadersKilled {  get; private set; }
     public int amountAlive => totalInvaders - invadersKilled;
     public int totalInvaders => rows * columns;
-    public float percentKilled => (float)invadersKilled / (float)totalInvaders;
+    public float percentKilled => invadersKilled / totalInvaders;
     private Vector3 _direction = Vector2.right;
     private void Awake()
     {
-        for (int row = 0; row < rows; row++)
+        InstantiateInvaders();
+        /*for (int row = 0; row < rows; row++)
         {
             float width = 2.0f * (columns - 1);
             float height = 2.0f * (rows - 1);
@@ -30,7 +33,7 @@ public class Invader : MonoBehaviour
                 position.x += column * 2.0f;
                 invader.transform.localPosition = position;
             }
-        }
+        }*/
     }
     private void Start()
     {
@@ -72,20 +75,40 @@ public class Invader : MonoBehaviour
             {
                 continue;
             }
-            if (Random.value < (1.0f / (float)amountAlive))
+            if (Random.value < (1.0f / amountAlive))
             {
                 Instantiate(missilePrefab, invader.position, Quaternion.identity);
                 break;
             }
         }
     }
+    private void InstantiateInvaders()
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            float width = 2.0f * (columns - 1);
+            float height = 2.0f * (rows - 1);
+            Vector3 centering = new Vector3(-width / 2, -height / 2);
+            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f), 0.0f);
+            for (int column = 0; column < columns; column++)
+            {
+                Invaders invader = Instantiate(prefabs[row], transform);
+                invader.killed += InvaderKilled;
+                Vector3 position = rowPosition;
+                position.x += column * 2.0f;
+                invader.transform.localPosition = position;
+            }
+        }
+    }
     private void InvaderKilled()
     {
         invadersKilled++;
-
         if (invadersKilled >= totalInvaders)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            InstantiateInvaders();
+            //Awake();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ScoreManager.instance.AddScore(points);
         }
     }
 

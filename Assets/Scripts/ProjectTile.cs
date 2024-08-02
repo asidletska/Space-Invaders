@@ -7,6 +7,7 @@ public class ProjectTile : MonoBehaviour
     public float speed;
     public Action destroyed;
 
+
     private void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
@@ -16,6 +17,7 @@ public class ProjectTile : MonoBehaviour
         if (destroyed != null)
         {
             destroyed.Invoke();
+            
         }
         Destroy(gameObject);
     }

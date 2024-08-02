@@ -1,26 +1,59 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ScoreManager : MonoBehaviour
 {
-    private Text scoreLabel;
-
+    public Text scoreText;
+    public Text highScoreText;
+    public static ScoreManager instance;
+    private int score;
     public static int highScore;
-    public static int points = 0;
 
-    void Start()
+    private void Awake()
     {
-        scoreLabel = GetComponent<Text>();
-        highScore = PlayerPrefs.GetInt("highscore", highScore);
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+    }
+    private void Start()
+    {
+        score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UpdateScoreText();
+        UpdateHighScoreText();
+    }
+    public void AddScore(int points)
+    {
+        score += points;
+        scoreText.text = "Score: " + score.ToString();
+        //UpdateScoreText();
+        CheckHighScore();
     }
 
-    void Update()
+    public void UpdateScoreText()
     {
-        scoreLabel.text = "Score: " + points.ToString();
+        scoreText.text = "Score: " + score.ToString();
+    }
 
-        if (points > highScore)
+    public void UpdateHighScoreText()
+    {
+        highScoreText.text = "High Score: " + highScore.ToString();
+        
+    }
+    public void CheckHighScore()
+    {
+        if (score > highScore)
         {
-            PlayerPrefs.SetInt("highscore", points);
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
         }
+    }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
     }
 }

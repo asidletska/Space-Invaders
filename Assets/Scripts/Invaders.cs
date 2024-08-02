@@ -7,13 +7,13 @@ public class Invaders : MonoBehaviour
     public float animationTime = 1.0f;
     public Action killed;
     private SpriteRenderer _spriteRenderer;
+    public int points = 10;
 
     private int _animationFrame;
-    public int points = 1;
     private void Awake()
     {
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();           
         }
     }
     private void Start()
@@ -34,10 +34,20 @@ public class Invaders : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
+        {          
+            killed?.Invoke();
+            gameObject.SetActive(false);           
+        }
+        if (ScoreManager.instance != null)
         {
-            FindObjectOfType<GameManager>().IncreaseScore(points);
-            killed.Invoke();
-            gameObject.SetActive(false);
+            ScoreManager.instance.AddScore(points);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (ScoreManager.instance != null)
+        {
+            //ScoreManager.instance.AddScore(points);
         }
     }
 }

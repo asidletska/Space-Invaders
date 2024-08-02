@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 public class HighScore : MonoBehaviour
 {
-    private Text highScoreLabel;
+    public Text highScoreLabel;
 
-   /* void Start()
+    void Start()
     {
         highScoreLabel = GetComponent<Text>();
-        highScoreLabel.text = "HIGHSCORE: " + PlayerPrefs.GetInt("highscore", ScoreManager.highScore).ToString();
+        highScoreLabel.text = "HighScore: " + PlayerPrefs.GetInt("highscore", ScoreManager.highScore).ToString();
     }
 
     void Update()
     {
-
-            highScoreLabel.text = "HIGHSCORE: " + PlayerPrefs.GetInt("highscore", ScoreManager.highScore).ToString();       
-    }*/
+       //FindObjectOfType<ScoreManager>().UpdateHighScoreText();
+       highScoreLabel.text = "HighScore: " + PlayerPrefs.GetInt("highscore", ScoreManager.highScore).ToString();       
+    }
 }
