@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+
         }
 
     }
@@ -29,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
         scoreText.text = "Score: " + score.ToString();
-        //UpdateScoreText();
+        UpdateScoreText();
         CheckHighScore();
     }
 

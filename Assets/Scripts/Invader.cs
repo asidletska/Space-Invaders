@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class Invader : MonoBehaviour
 {
@@ -19,21 +20,6 @@ public class Invader : MonoBehaviour
     private void Awake()
     {
         InstantiateInvaders();
-        /*for (int row = 0; row < rows; row++)
-        {
-            float width = 2.0f * (columns - 1);
-            float height = 2.0f * (rows - 1);
-            Vector3 centering = new Vector3(-width / 2, -height / 2);
-            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f), 0.0f );
-            for (int column = 0; column < columns; column++)
-            {
-                Invaders invader = Instantiate(prefabs[row], transform);
-                invader.killed += InvaderKilled;
-                Vector3 position = rowPosition;
-                position.x += column * 2.0f;
-                invader.transform.localPosition = position;
-            }
-        }*/
     }
     private void Start()
     {
@@ -106,9 +92,7 @@ public class Invader : MonoBehaviour
         if (invadersKilled >= totalInvaders)
         {
             InstantiateInvaders();
-            //Awake();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            ScoreManager.instance.AddScore(points);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
