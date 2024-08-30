@@ -13,7 +13,6 @@ public class HighScore : MonoBehaviour
 
     void Update()
     {
-       //FindObjectOfType<ScoreManager>().UpdateHighScoreText();
        highScoreLabel.text = "HighScore: " + PlayerPrefs.GetInt("highscore", ScoreManager.highScore).ToString();       
     }
 }

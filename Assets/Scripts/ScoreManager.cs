@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
     public static ScoreManager instance;
-    private int score;
+    private int score { get; set; }
     public static int highScore;
 
     private void Awake()
@@ -15,13 +15,13 @@ public class ScoreManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-
         }
 
     }
     private void Start()
     {
-        score = 0;
+        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = PlayerPrefs.GetString("Score: " + score.ToString());
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         UpdateScoreText();
         UpdateHighScoreText();
@@ -52,9 +52,9 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", highScore);
         }
     }
+
     private void OnApplicationQuit()
     {
         PlayerPrefs.DeleteAll();
-        //PlayerPrefs.Save();
     }
 }

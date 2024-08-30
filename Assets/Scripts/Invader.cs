@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 public class Invader : MonoBehaviour
 {
@@ -11,12 +10,15 @@ public class Invader : MonoBehaviour
     public AnimationCurve speed;
     public ProjectTile missilePrefab;
     public float missileAttackRate = 1.0f;
-    private int points;
+
     public int invadersKilled {  get; private set; }
     public int amountAlive => totalInvaders - invadersKilled;
     public int totalInvaders => rows * columns;
     public float percentKilled => invadersKilled / totalInvaders;
     private Vector3 _direction = Vector2.right;
+
+    // gpt
+    private List<Vector3> initialPositions = new List<Vector3>();
     private void Awake()
     {
         InstantiateInvaders();
@@ -70,6 +72,7 @@ public class Invader : MonoBehaviour
     }
     private void InstantiateInvaders()
     {
+        initialPositions.Clear();
         for (int row = 0; row < rows; row++)
         {
             float width = 2.0f * (columns - 1);
@@ -83,17 +86,32 @@ public class Invader : MonoBehaviour
                 Vector3 position = rowPosition;
                 position.x += column * 2.0f;
                 invader.transform.localPosition = position;
+
+                initialPositions.Add(position);// chat gpt
             }
         }
+        transform.position = Vector3.zero;
     }
+
     private void InvaderKilled()
     {
         invadersKilled++;
         if (invadersKilled >= totalInvaders)
         {
+
+            ResetInvaders();//gpt
             InstantiateInvaders();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
+    }
+    // gpt
+    private void ResetInvaders()
+    {
+        foreach( Transform invader in transform)
+        {
+            Destroy(invader.gameObject);
+        }
+        invadersKilled = 0;
     }
 
 }
